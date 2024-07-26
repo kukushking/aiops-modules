@@ -44,6 +44,10 @@ This module creates a Ray cluster in AWS EKS Kubernetes cluster. It deploys a Ra
         cpu: "1"
         memory: "8G"
 ```
+- `node_selector` - Node selector. Default is empty. To use GPU nodes pass:
+```yaml
+      usage: gpu
+```
 - `tags` - List of additional tags to apply to all resources
 
 ## User Guide
@@ -185,4 +189,7 @@ parameters:
       limits:
         cpu: "4"
         memory: "24G"
+  - name: NodeSelector
+    value:
+      usage: gpu
 ```

@@ -36,20 +36,26 @@ parameters:
     value:
       eks_nodegroup_config:
         - eks_ng_name: ng1
-          eks_node_quantity: 2
+          eks_node_quantity: 1
           eks_node_max_quantity: 5
           eks_node_min_quantity: 1
           eks_node_disk_size: 200
           eks_node_instance_type: "m5.12xlarge"
         - eks_ng_name: ng-gpu
-          eks_node_quantity: 0
+          eks_node_quantity: 1
           eks_node_max_quantity: 2
-          eks_node_min_quantity: 0
+          eks_node_min_quantity: 1
           eks_node_disk_size: 200
-          eks_node_instance_type: "g4dn.xlarge"
+          eks_node_instance_type: "g4dn.4xlarge"
           eks_node_labels:
             usage: gpu
           use_gpu_ami: True
+          install_nvidia_device_plugin: True
+          # eks_node_taints:
+          #   - key: "nvidia.com/gpu"
+          #     value: "true"
+          #     # operator: "Equal"
+          #     effect: "NoSchedule"
       eks_node_spot: False
       eks_secrets_envelope_encryption: False
       eks_api_endpoint_private: False
@@ -57,3 +63,4 @@ parameters:
     value:
       deploy_cluster_autoscaler: True # We deploy it unless set to False
       deploy_metrics_server: True # We deploy it unless set to False
+      deploy_cloudwatch_observability_addon: True

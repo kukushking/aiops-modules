@@ -36,6 +36,7 @@ class RayCluster(Stack):
         worker_min_replicas: int,
         worker_max_replicas: int,
         worker_resources: Dict[str, Dict[str, str]],
+        node_selector: Dict[str, str],
         **kwargs: Any,
     ) -> None:
         self.project_name = project_name
@@ -108,6 +109,7 @@ class RayCluster(Stack):
                     "resources": head_resources,
                     "volumes": [{"name": "log-volume", "emptyDir": {}}],
                     "volumeMounts": [{"mountPath": "/tmp/ray", "name": "log-volume"}],
+                    "nodeSelector": node_selector,
                 },
                 "worker": {
                     "replicas": worker_replicas,
@@ -117,6 +119,7 @@ class RayCluster(Stack):
                     "resources": worker_resources,
                     "volumes": [{"name": "log-volume", "emptyDir": {}}],
                     "volumeMounts": [{"mountPath": "/tmp/ray", "name": "log-volume"}],
+                    "nodeSelector": node_selector,
                 },
             },
         )

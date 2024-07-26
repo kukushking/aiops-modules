@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - adds workflow specific to changes for `requirements-dev.txt` so all static checks are run
 - add `ray-cluster` module based on `kuberay-helm` charts
+- add `nodeSelector` to `ray-cluster` module to enable GPU support
 
 ### **Changed**
 
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - downscope `ray-operator` service account permissions
 - add an example custom `ray-image`
 - document available manifests in readme
+- enable GPU support for `ray-on-eks` manifest, use `rayproject/ray-ml:2.30.0-gpu` image
 
 ## v1.3.0
 

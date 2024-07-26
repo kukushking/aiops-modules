@@ -53,6 +53,7 @@ class SeedFarmerParameters(CdkBaseSettings):
     worker_min_replicas: int = Field(default=1)
     worker_max_replicas: int = Field(default=10)
     worker_resources: Dict[str, Dict[str, str]] = Field(default=DEFAULT_POD_RESOURCES)
+    node_selector: Dict[str, str] = Field(default={})
     tags: Optional[Dict[str, str]] = Field(default=None)
 
 

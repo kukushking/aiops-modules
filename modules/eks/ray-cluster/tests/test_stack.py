@@ -46,6 +46,7 @@ def ray_cluster_stack(stack_defaults) -> cdk.Stack:
     worker_max_replicas = 10
     head_resources = {"limits": {"cpu": "1", "memory": "8G"}, "requests": {"cpu": "1", "memory": "8G"}}
     worker_resources = {"limits": {"cpu": "1", "memory": "8G"}, "requests": {"cpu": "1", "memory": "8G"}}
+    node_selector = {}
 
     return ray_cluster_stack.RayCluster(
         scope=app,
@@ -68,6 +69,7 @@ def ray_cluster_stack(stack_defaults) -> cdk.Stack:
         worker_min_replicas=worker_min_replicas,
         worker_max_replicas=worker_max_replicas,
         worker_resources=worker_resources,
+        node_selector=node_selector,
         env=cdk.Environment(
             account=os.environ["CDK_DEFAULT_ACCOUNT"],
             region=os.environ["CDK_DEFAULT_REGION"],

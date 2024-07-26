@@ -35,6 +35,7 @@ ray_cluster_stack = RayCluster(
     worker_min_replicas=app_settings.parameters.worker_min_replicas,
     worker_max_replicas=app_settings.parameters.worker_max_replicas,
     worker_resources=app_settings.parameters.worker_resources,
+    node_selector=app_settings.parameters.node_selector,
     env=env,
 )
 
